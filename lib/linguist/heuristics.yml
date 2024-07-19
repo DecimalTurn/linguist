@@ -92,6 +92,8 @@ disambiguations:
     pattern: '^[ \t]*#(?i)(?:define|endif|endmacro|ifn?def|include|lang|macro)(?:$|\s)'
   - language: BASIC
     pattern: '\A\s*\d'
+  - language: Visual Basic 6.0
+    pattern: '''@Lang (VB\d|Visual Basic \d)'
   - language: VBA
     and:
     - named_pattern: vb-module
