@@ -1,5 +1,5 @@
 Attribute VB_Name = "mHook"
-'Lang VB6
+'@Lang VB6
 Option Explicit
 
 '-- API:
