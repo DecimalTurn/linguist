@@ -91,13 +91,16 @@ disambiguations:
   - language: B4X
     pattern: '\A\W{0,3}(?:.*(?:\r?\n|\r)){0,9}B4(?:J|A|R|i)=true'
   - language: FreeBasic
-    pattern: '^[ \t]*#(?i)(?:define|endif|endmacro|ifn?def|include|lang|macro)(?:$|\s)'
+    pattern:
+    - '^[ \t]*#(?i)(?:define|endif|endmacro|ifn?def|include|lang|macro)(?:$|\s)'
+    - '^[ \t]*''[ ]*(?i)@Lang (FB|FreeBasic)\b'
   - language: BASIC
     pattern: '\A\s*\d'
   - language: VBA
     and:
     - named_pattern: vb-module
     - named_pattern: vba
+    - negative_pattern: '^[ ]*''[ ]*(?i)@Lang (VB\d|Visual Basic \d)\b'
   - language: Visual Basic 6.0
     named_pattern: vb-module
 - extensions: ['.bb']
