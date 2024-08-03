@@ -21,7 +21,7 @@ module Linguist
       return [] if blob.symlink?
       self.load()
 
-      data = blob.data[0...HEURISTICS_CONSIDER_BYTES]
+      data = blob.data[0...HEURISTICS_CONSIDER_BYTES].force_encoding('UTF-8')
 
       @heuristics.each do |heuristic|
         if heuristic.matches?(blob.name, candidates)
@@ -88,9 +88,9 @@ module Linguist
     #      Regexp.union will be used.
     def self.to_regex(str)
       if str.kind_of?(Array)
-        Regexp.union(str.map { |s| Regexp.new(s) })
+        Regexp.union(str.map { |s| Regexp.new(s, Regexp::FIXEDENCODING) })
       else
-        Regexp.new(str)
+        Regexp.new(str, Regexp::FIXEDENCODING)
       end
     end
 
