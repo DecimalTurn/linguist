@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'benchmark'
+
+
+
+puts Benchmark.measure { 1000000.times { "test123" =~ /1/ } }
+puts Benchmark.measure { 1000000.times { "test123".match(/1/) } }
+puts Benchmark.measure { 1000000.times { "test123".match?(/1/) } }
+
+puts "===================="
+
+# Read the content of the file
+file_content = File.read('/workspaces/linguist/samples/PHP/drupal.php')
+
+# Perform the benchmark operations
+#puts Benchmark.measure { 1000000.times { file_content =~ /\A(?:.*(?:\r?\n|\r))*Something/ } }
+#puts Benchmark.measure { 1000000.times { file_content.scan(/<\?p/) } }
+#puts Benchmark.measure { 1000000.times { file_content.match(/\A(?:.*(?:\r?\n|\r))*Something/) } }
+#puts Benchmark.measure { 1000000.times { file_content.match?(/\A(?:.*(?:\r?\n|\r))*Something/) } }
+
+# Test the return value of the match and match? methods
+
+# puts "Scan: #{file_content.scan(/\w{4,5}/)}"
+#puts "Match: #{file_content.scan(/\w{4,5}/)}"
+#puts "Match?: #{file_content.match?(/p/)}"
+
+puts "Match: #{file_content.match(/\w{4,}/).to_a}"
+
+puts Benchmark.measure { 10.times { system('bundle exec bin/github-linguist ../Prusa3-vanilla/ > /dev/null 2>&1') }}
