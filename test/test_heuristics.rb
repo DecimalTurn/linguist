@@ -364,6 +364,22 @@ class TestHeuristics < Minitest::Test
     })
   end
 
+  def test_conf_by_heuristics
+    assert_heuristics({
+      "INI" => all_fixtures("INI", "*.conf"),
+    }, alt_name="test.conf")
+    assert_heuristics({
+      "INI" => Dir.glob("#{fixtures_path}/Generic/conf/INI/*"),
+      nil => Dir.glob("#{fixtures_path}/Generic/conf/nil/*"),
+    })
+  end
+
+  def test_container_by_heuristics
+    assert_heuristics({
+      "INI" => all_fixtures("INI", "*.container"),
+    })
+  end
+
   def test_cs_by_heuristics
     assert_heuristics({
       "C#" => all_fixtures("C#", "*.cs"),
@@ -721,6 +737,12 @@ class TestHeuristics < Minitest::Test
     })
   end
 
+  def test_mount_by_heuristics
+    assert_heuristics({
+      "INI" => all_fixtures("INI", "*.mount"),
+    })
+  end
+
   def test_ms_by_heuristics
     assert_heuristics({
       "Roff" => all_fixtures("Roff", "*.ms"),
@@ -750,6 +772,12 @@ class TestHeuristics < Minitest::Test
       # Missing heuristic for NCL
       nil => all_fixtures("NCL", "*.ncl")
     }, alt_name="test.ncl")
+  end
+
+  def test_network_by_heuristics
+    assert_heuristics({
+      "INI" => all_fixtures("INI", "*.network"),
+    })
   end
 
   def test_nl_by_heuristics
@@ -785,6 +813,12 @@ class TestHeuristics < Minitest::Test
       "Gnuplot" => all_fixtures("Gnuplot"),
       "OpenEdge ABL" => all_fixtures("OpenEdge ABL")
     }, alt_name="test.p")
+  end
+
+  def test_path_by_heuristics
+    assert_heuristics({
+      "INI" => all_fixtures("INI", "*.path"),
+    })
   end
 
   def test_php_by_heuristics
@@ -954,6 +988,18 @@ class TestHeuristics < Minitest::Test
     })
   end
 
+  def test_service_by_heuristics
+    assert_heuristics({
+      "INI" => all_fixtures("INI", "*.service"),
+    })
+  end
+
+  def test_socket_by_heuristics
+    assert_heuristics({
+      "INI" => all_fixtures("INI", "*.socket"),
+    })
+  end
+
   def test_sol_by_heuristics
     assert_heuristics({
       "Gerber Image" => Dir.glob("#{fixtures_path}/Generic/sol/Gerber Image/*"),
@@ -1034,6 +1080,18 @@ class TestHeuristics < Minitest::Test
     assert_heuristics({
       "Java Server Pages" => Dir.glob("#{fixtures_path}/Generic/tag/Java Server Pages/*"),
       nil => Dir.glob("#{fixtures_path}/Generic/tag/nil/*")
+    })
+  end
+
+  def test_target_by_heuristics
+    assert_heuristics({
+      "INI" => all_fixtures("INI", "*.target"),
+    })
+  end
+
+  def test_timer_by_heuristics
+    assert_heuristics({
+      "INI" => all_fixtures("INI", "*.timer"),
     })
   end
 
