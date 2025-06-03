@@ -1045,7 +1045,7 @@ named_patterns:
   # Top module declarations unique to VBA
   - '^[ ]*Option (?:Private Module|Compare Database)\b'
   # General VBA libraries and objects
-  - '(?: |\()(?:Access|Excel|Outlook|PowerPoint|Visio|Word|VBIDE)\.\w'
+  - '(?: |\(|CreateObject\(")(?:Access|Excel|Outlook|PowerPoint|Visio|Word|VBIDE)\.\w'
   - '\b(?:(?:Active)?VBProjects?|VBComponents?|Application\.(?:VBE|ScreenUpdating))\b'
   # AutoCAD, Outlook, PowerPoint and Word objects
   - '\b(?:ThisDrawing|AcadObject|Active(?:Explorer|Inspector|Window\.Presentation|Presentation|Document)|Selection\.(?:Document|Find|Paragraphs|Range))\b'
