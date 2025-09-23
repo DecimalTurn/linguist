@@ -200,7 +200,7 @@ disambiguations:
     # e.g., "[foobar]" or "# [commented out]"
     - pattern: '^[#\s]*\[[^\]]+\]\s*$'
     - named_pattern: key_equals_value
-    - negative_pattern: '^[^#;=\[]+[^ \n=]$'
+    - negative_pattern: '^[^#;=\[]+[^ \r\n=]$'
 - extensions: ['.cs']
   rules:
   - language: Smalltalk
