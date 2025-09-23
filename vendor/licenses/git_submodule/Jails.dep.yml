@@ -1,6 +1,6 @@
 ---
 name: Jails
-version: 96da59f6160087d1514e97c7d95959a877b06612
+version: 8abaced03068eeebc39caeba61d05fac02dbea54
 type: git_submodule
 homepage: https://github.com/SogoCZE/Jails.git
 license: mit
