@@ -8,8 +8,11 @@ module Linguist
 
     def instrument(name, payload = {})
       if name == "linguist.detected" && payload[:blob]
-        @detected_info[payload[:blob].name] = {
-          strategy: payload[:strategy].name.split("::").last,
+        strategies = payload[:strategies] || [payload[:strategy]].compact
+        strategy_names = strategies.map { |s| s.name.split("::").last }.join("+")
+        blob_name = payload[:blob].name.to_s.force_encoding("UTF-8").scrub
+        @detected_info[blob_name] = {
+          strategy: strategy_names,
           language: payload[:language]&.name
         }
       end
