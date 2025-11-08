@@ -25,25 +25,27 @@ class << Linguist
     Linguist.instrument("linguist.detection", :blob => blob) do
       # Call each strategy until one candidate is returned.
       languages = []
-      returning_strategy = nil
+      contributing_strategies = []
 
       STRATEGIES.each do |strategy|
-        returning_strategy = strategy
         candidates = Linguist.instrument("linguist.strategy", :blob => blob, :strategy => strategy, :candidates => languages) do
           strategy.call(blob, languages)
         end
         if candidates.size == 1
+          # Single candidate found, this strategy provides the final answer
+          contributing_strategies << strategy
           languages = candidates
           break
         elsif candidates.size > 1
-          # More than one candidate was found, pass them to the next strategy.
+          # More than one candidate was found, this strategy contributed to narrowing down
+          contributing_strategies << strategy
           languages = candidates
         else
           # No candidates, try the next strategy
         end
       end
 
-      Linguist.instrument("linguist.detected", :blob => blob, :strategy => returning_strategy, :language => languages.first)
+      Linguist.instrument("linguist.detected", :blob => blob, :strategies => contributing_strategies, :language => languages.first)
 
       languages.first
     end
