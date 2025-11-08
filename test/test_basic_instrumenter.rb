@@ -69,7 +69,9 @@ class TestBasicInstrumenter < Minitest::Test
     Linguist.detect(blob)
 
     assert @instrumenter.detected_info.key?(blob.name)
-    assert_equal "Heuristics", @instrumenter.detected_info[blob.name][:strategy]
+    # Multiple strategies may contribute, but heuristics should be involved
+    strategy_chain = @instrumenter.detected_info[blob.name][:strategy]
+    assert strategy_chain.include?("Heuristics"), "Expected Heuristics to be part of strategy chain: #{strategy_chain}"
   end
 
   def test_tracks_filename_strategy
@@ -92,6 +94,24 @@ class TestBasicInstrumenter < Minitest::Test
     assert @instrumenter.detected_info.key?(blob.name)
     assert_match(/overridden by \.gitattributes/, @instrumenter.detected_info[blob.name][:strategy])
     assert_equal "Java", @instrumenter.detected_info[blob.name][:language]
+  end
+
+  def test_tracks_combined_strategies
+    # .pl file that requires both Extension strategy (to identify .pl candidates)
+    # and Heuristics strategy (to resolve between Perl and Raku)
+    blob = fixture_blob("Raku/chromosome.pl")
+    Linguist.detect(blob)
+
+    assert @instrumenter.detected_info.key?(blob.name)
+    strategy_chain = @instrumenter.detected_info[blob.name][:strategy]
+
+    # Should contain both Extension (provides .pl candidates) and Heuristics (resolves to Raku)
+    assert strategy_chain.include?("Extension"), "Expected Extension to be part of strategy chain: #{strategy_chain}"
+    assert strategy_chain.include?("Heuristics"), "Expected Heuristics to be part of strategy chain: #{strategy_chain}"
+    assert_equal "Raku", @instrumenter.detected_info[blob.name][:language]
+
+    # The combined strategy should show both contributing strategies
+    assert_match(/Extension.*Heuristics/, strategy_chain)
   end
 end
 
