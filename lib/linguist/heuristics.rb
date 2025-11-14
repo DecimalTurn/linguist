@@ -24,7 +24,7 @@ module Linguist
       data = blob.data[0...HEURISTICS_CONSIDER_BYTES]
 
       @heuristics.each do |heuristic|
-        if heuristic.matches?(blob.name, candidates)
+        if heuristic.matches?(blob.name)
           return Array(heuristic.call(data))
         end
       end
@@ -115,12 +115,10 @@ module Linguist
       end.flatten.uniq
     end
 
-    # Internal: Check if this heuristic matches the candidate filenames or
-    # languages.
-    def matches?(filename, candidates)
+    # Internal: Check if this heuristic has extensions that matche the filename
+    def matches?(filename)
       filename = filename.downcase
-      candidates = candidates.compact.map(&:name)
-      @exts.any? { |ext| filename.end_with?(ext) }
+            @exts.any? { |ext| filename.end_with?(ext) }
     end
 
     # Internal: Perform the heuristic
