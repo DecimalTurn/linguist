@@ -78,7 +78,7 @@ disambiguations:
     # ALGOL 68 comments
     - '^#[^#\r\n]+#$'
     # ALGOL 60/68 keywords
-    - '(?i)\b(integer|real|boolean|string)\b\s+\w+\s*:=\s*'
+    - '(?i)\b(integer|real|boolean|string)\b[ ]+\w+\s*:=\s*'
     - '(?i)^begin[\s\S]*^end'
 - extensions: ['.app']
   rules:
