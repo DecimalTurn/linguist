@@ -323,13 +323,13 @@ disambiguations:
     pattern: '^: '
   - language: Filebench WML
     pattern: 'flowop'
-  - language: Fortran
+  - language: Fortran Fixed Form
     named_pattern: fortran
 - extensions: ['.for']
   rules:
   - language: Forth
     pattern: '^: '
-  - language: Fortran
+  - language: Fortran Fixed Form
     named_pattern: fortran
 - extensions: ['.fpp']
   rules:

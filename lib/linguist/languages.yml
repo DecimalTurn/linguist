@@ -2358,6 +2358,16 @@ Forth:
   codemirror_mime_type: text/x-forth
   language_id: 114
 Fortran:
+  type: programming
+  color: "#4d41b1"
+  extensions:
+  - ".fpp"
+  tm_scope: source.fortran.modern
+  ace_mode: fortran
+  codemirror_mode: fortran
+  codemirror_mime_type: text/x-fortran
+  language_id: 107
+Fortran Fixed Form:
   group: Fortran
   type: programming
   color: "#4d41b1"
@@ -2365,12 +2375,13 @@ Fortran:
   - ".f"
   - ".f77"
   - ".for"
-  - ".fpp"
   tm_scope: source.fortran
   ace_mode: fortran
   codemirror_mode: fortran
   codemirror_mime_type: text/x-fortran
-  language_id: 107
+  aliases:
+  - fortranfixed
+  language_id: 303373567
 Fortran Free Form:
   group: Fortran
   color: "#4d41b1"
@@ -2380,6 +2391,8 @@ Fortran Free Form:
   - ".f03"
   - ".f08"
   - ".f95"
+  aliases:
+  - f90
   tm_scope: source.fortran.modern
   ace_mode: fortran
   codemirror_mode: fortran
@@ -2394,6 +2407,7 @@ FreeBASIC:
   tm_scope: source.vbnet
   aliases:
   - fb
+  - fortran modern
   ace_mode: text
   codemirror_mode: vb
   codemirror_mime_type: text/x-vb

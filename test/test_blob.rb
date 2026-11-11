@@ -13,6 +13,13 @@ class TestBlob < Minitest::Test
     assert_equal "foo.rb", sample_blob_memory("Ruby/foo.rb").name
   end
 
+  def test_fortran_fence_aliases
+    assert_equal "source.fortran.modern", Language["fortran"].tm_scope
+    assert_equal "Fortran Free Form", Language["f90"].name
+    assert_equal "source.fortran", Language["fortran-fixed-form"].tm_scope
+    assert_equal "Fortran Fixed Form", Language["fortranfixed"].name
+  end
+
   def test_mime_type
     assert_equal "application/pdf", fixture_blob_memory("Binary/octocat.ai").mime_type
     assert_equal "application/x-ruby", sample_blob_memory("Ruby/grit.rb").mime_type

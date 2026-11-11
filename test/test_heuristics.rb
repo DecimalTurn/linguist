@@ -471,14 +471,14 @@ class TestHeuristics < Minitest::Test
 
   def test_f_by_heuristics
     assert_heuristics({
-      "Fortran" => all_fixtures("Fortran", "*.f") + all_fixtures("Fortran", "*.for"),
+      "Fortran Fixed Form" => all_fixtures("Fortran Fixed Form", "*.f") + all_fixtures("Fortran Fixed Form", "*.for"),
       "Forth" => all_fixtures("Forth", "*.f") + all_fixtures("Forth", "*.for")
     }, alt_name="main.f")
   end
 
   def test_for_by_heuristics
     assert_heuristics({
-      "Fortran" => all_fixtures("Fortran", "*.f") + all_fixtures("Fortran", "*.for"),
+      "Fortran Fixed Form" => all_fixtures("Fortran Fixed Form", "*.f") + all_fixtures("Fortran Fixed Form", "*.for"),
       "Forth" => all_fixtures("Forth", "*.f") + all_fixtures("Forth", "*.for"),
       nil => all_fixtures("Formatted", "*.for")
     }, alt_name="main.for")

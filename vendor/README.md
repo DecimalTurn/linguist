@@ -208,6 +208,7 @@ This is a list of grammars that Linguist selects to provide syntax highlighting 
 - **Fluent:** [macabeus/vscode-fluent](https://github.com/macabeus/vscode-fluent)
 - **Forth:** [textmate/forth.tmbundle](https://github.com/textmate/forth.tmbundle)
 - **Fortran:** [textmate/fortran.tmbundle](https://github.com/textmate/fortran.tmbundle)
+- **Fortran Fixed Form:** [textmate/fortran.tmbundle](https://github.com/textmate/fortran.tmbundle)
 - **Fortran Free Form:** [textmate/fortran.tmbundle](https://github.com/textmate/fortran.tmbundle)
 - **FreeBASIC:** [peters-ben-0007/VBDotNetSyntax](https://github.com/peters-ben-0007/VBDotNetSyntax)
 - **FreeMarker:** [freemarker/FreeMarker.tmbundle](https://github.com/freemarker/FreeMarker.tmbundle)
