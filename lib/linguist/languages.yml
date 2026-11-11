@@ -2360,8 +2360,6 @@ Forth:
 Fortran:
   type: programming
   color: "#4d41b1"
-  extensions:
-  - ".fpp"
   tm_scope: source.fortran.modern
   ace_mode: fortran
   codemirror_mode: fortran
@@ -2375,6 +2373,7 @@ Fortran Fixed Form:
   - ".f"
   - ".f77"
   - ".for"
+  - ".fpp"
   tm_scope: source.fortran
   ace_mode: fortran
   codemirror_mode: fortran
@@ -2391,6 +2390,7 @@ Fortran Free Form:
   - ".f03"
   - ".f08"
   - ".f95"
+  - ".fpp"
   aliases:
   - f90
   tm_scope: source.fortran.modern

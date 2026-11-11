@@ -324,13 +324,13 @@ disambiguations:
   - language: Filebench WML
     pattern: 'flowop'
   - language: Fortran Fixed Form
-    named_pattern: fortran
+    named_pattern: fortran-generic
 - extensions: ['.for']
   rules:
   - language: Forth
     pattern: '^: '
   - language: Fortran Fixed Form
-    named_pattern: fortran
+    named_pattern: fortran-generic
 - extensions: ['.fpp']
   rules:
   - language: FPP
@@ -338,8 +338,10 @@ disambiguations:
     - '^\s*(active|passive|queued)\s+component\s'
     - '^\s*(module|topology|struct|enum|port|interface)\s+[A-Za-z_$][A-Za-z0-9_]*\s*\{'
     - '^\s*instance\s+[A-Za-z_$][A-Za-z0-9_]*\s*:'
-  - language: Fortran
-    named_pattern: fortran
+  - language: Fortran Fixed Form
+    named_pattern: fortran-fixed-form
+  - language: Fortran Free Form
+    named_pattern: fortran-generic
 - extensions: ['.fr']
   rules:
   - language: Forth
@@ -1173,7 +1175,8 @@ named_patterns:
   - '^\s*namespace\s'
   - '^\s*(?:public\s+)?include\s'
   - '^\s*(?:(?:public|export|global)\s+)?(?:atom|constant|enum|function|integer|object|procedure|sequence|type)\s'
-  fortran: '^(?i:[c*][^abd-z]|      (subroutine|program|end|data)\s|\s*!)'
+  fortran-fixed-form: '^(?i:[c*][^abd-z]|      (subroutine|program|end|data)\s)'
+  fortran-generic: '^(?i:[c*][^abd-z]|      (subroutine|program|end|data)\s|\s*!)'
   freebasic:
   - '(?i)^[ \t]*#(?:define|endif|endmacro|ifn?def|include|lang|macro|pragma)(?:$|\s)'
   - '(?i)^[ \t]*dim( shared)? [a-z_][a-z0-9_]* as [a-z_][a-z0-9_]* ptr'

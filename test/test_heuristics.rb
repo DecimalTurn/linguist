@@ -487,7 +487,8 @@ class TestHeuristics < Minitest::Test
   def test_fpp_by_heuristics
     assert_heuristics({
       "FPP" => all_fixtures("FPP", "*.fpp"),
-      "Fortran" => all_fixtures("Fortran", "*.fpp")
+      "Fortran Fixed Form" => all_fixtures("Fortran Fixed Form", "*.fpp"),
+      "Fortran Free Form" => all_fixtures("Fortran Free Form", "*.fpp")
     })
   end
 
